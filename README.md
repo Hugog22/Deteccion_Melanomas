@@ -57,12 +57,19 @@
 Detección_Melanomas/
 ├── 📓 melanoma_detection.ipynb    # Notebook: interfaz sobre run_pipeline.py v2.0
 ├── 🐍 run_pipeline.py             # Orquestador principal v2.0 (A/B/C + ablaciones D/E)
+├── 🐍 evaluate_trained_model.py   # Evaluar modelo ya entrenado (Fases 3-6) sin re-entrenar
+├── 🐍 run_xai_only.py             # Recalcular mapas Grad-CAM++ sin re-entrenar
 ├── 📋 requirements.txt            # Dependencias
 ├── src/
 │   ├── data_pipeline.py           # Fase 1: Dataset + Augmentation + FocalLoss
 │   ├── model.py                   # Fase 2: DenseNet-121 + Trainer
 │   ├── xai_gradcam.py             # Fase 3: Grad-CAM++ + Clever Hans
-│   └── evaluation.py              # Fase 4: Métricas clínicas + Mitigación
+│   ├── evaluation.py              # Fase 4: Métricas clínicas + Mitigación
+│   └── modify_pipeline.py         # Script para modificaciones de la pipeline
+├── tests/                         # Pruebas unitarias
+│   ├── test_occlusion.py          # Pruebas de oclusión visual
+│   ├── test_occlusion_controlled.py
+│   └── test_regressions.py        # Pruebas de regresión
 ├── data/                          # Dataset descargado o generado automáticamente
 │   ├── raw/benign/ | raw/malignant/
 │   └── metadata.csv               # Índice maestro con labels, split y metadatos
